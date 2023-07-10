@@ -1,0 +1,25 @@
+controller:
+  config:
+    ssl-redirect: "false"
+  ingressClass: nginx
+  ingressClassResource:
+    name: nginx
+    default: true
+    enabled: true
+    controllerValue: "k8s.io/ingress-nginx"
+  service:
+    type: LoadBalancer
+    externalTrafficPolicy: Local
+  resources:
+    requests:
+      cpu: 500m
+      memory: 512M
+    limits:
+      cpu: 1000m
+      memory: 1024M
+  autoscaling:
+    enabled: true
+    minReplicas: 3
+    maxReplicas: 6
+
+nameOverride: nginx-ingress

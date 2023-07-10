@@ -1,0 +1,8 @@
+config:
+  agent:
+    mirror:
+      tls: true
+      filters:
+        - namespace: ingress-nginx
+          pod_labels:
+            "app.kubernetes.io/component": controller
