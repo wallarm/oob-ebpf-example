@@ -25,18 +25,8 @@ apply:
 get-config:
 	az aks get-credentials --admin --name ${CLUSTER} -g ${CLUSTER}
 
-attack: attack-http attack-https
-
-attacks: attacks-http attacks-https
-
-attack-http:
-	curl -H "Host: ${APP_HOST}" ${LB_IP}/anything/etc/passwd/$(RANDOM)/attack-http
-
 attack-https:
 	curl -k -H "Host: ${APP_HOST}" https://${LB_IP}/anything/etc/passwd/$(RANDOM)/attack-ssl --http1.1
-
-attacks-http:
-	wrk -H "Host: ${APP_HOST}" -d 30 -c 1 -t 1 http://${LB_IP}/anything/etc/passwd/$(RANDOM)/attacks-http
 
 attacks-https:
 	wrk -H "Host: ${APP_HOST}" -d 30 -c 1 -t 1 https://${LB_IP}/anything/etc/passwd/$(RANDOM)/attacks-ssl
