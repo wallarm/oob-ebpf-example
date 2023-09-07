@@ -22,7 +22,6 @@ resource "helm_release" "oob" {
   repository = "https://charts.wallarm.com"
   chart      = "wallarm-oob"
   namespace  = "oob-ebpf"
-  version    = "0.14.0"
   values     = [file("../helm-values/oob-ebpf.yaml")]
   wait       = true
 

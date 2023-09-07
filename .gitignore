@@ -29,3 +29,7 @@ override.tf.json
 # example: *tfplan*
 
 .env
+.idea
+node_modules
+package-lock.json
+.terraform.lock.hcl
